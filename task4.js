@@ -1,0 +1,3 @@
+var Moda = function(array) {
+
+}
