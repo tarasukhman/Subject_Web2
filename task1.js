@@ -5,7 +5,7 @@ var string_separate = function(str) {
         if (str[i] != ' ') {
             word += str[i];
         }
-        if (str[i] == ' ') {
+        if (str[i] == ' ' || i == str.length - 1) {
             array.push(word);
             word = '';
         }
@@ -13,4 +13,4 @@ var string_separate = function(str) {
     return array;
 }
 
-console.log(string_separate("hello i am taras"));
+console.log(string_separate("This is some text"));
