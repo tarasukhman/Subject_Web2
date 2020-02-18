@@ -1,19 +1,15 @@
-var AllPermutations = function(string) {
-    var results = [];
-
-    if (string.length == 1) {
-        results.push(string);
-        return results;
-    }
-
-    for (var i = 0; i < string.length; i++) {
-        var firstChar = string[i];
-        var charsLeft = string.substring(0, i) + string.substring(i + 1);
-        var innerPermutations = AllPermutations(charsLeft);
-        for (var j = 0; j < innerPermutations.length; j++) {
-            results.push(firstChar + innerPermutations[j]);
+var StringSort = function(str) {
+    for (var i = 0; i < str.length; i++) {
+        for (var j = 0; j < str.length - i - 1; j++) {
+            if (str[j] > str[j + 1]) {
+                var temp = str[j];
+                str[j] = str[j + 1];
+                str[j + 1] = temp;
+            }
         }
     }
-    return results;
+    console.log(str);
 }
-console.log(AllPermutations("12345"));
+
+
+StringSort("programmig");

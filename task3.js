@@ -1,12 +1,15 @@
-var Factorial = function(n) {
-    if (n == 0) {
-        return 1;
-    } else if (n == 1) {
-        return 1;
+var MaxDivisor = function(num1, num2) {
+    let max = 0;
+    if (num1 <= 0 || num2 <= 0) {
+        return;
     } else {
-        return n * Factorial(n - 1);
+        let div = 1;
+        while (div <= num1 && div <= num2) {
+            if (num1 % div == 0 && num2 % div == 0) max = div;
+            div++;
+        }
     }
+    return max;
 }
-for (var i = 0; i < 6; i++) {
-    console.log(i + "!=" + Factorial(i));
-}
+
+console.log(MaxDivisor(28, 64));
