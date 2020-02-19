@@ -12,4 +12,4 @@ var MaxDivisor = function(num1, num2) {
     return max;
 }
 
-console.log(MaxDivisor(28, 64));
+console.log(MaxDivisor(28, 28));

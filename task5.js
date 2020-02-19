@@ -2,4 +2,4 @@ var GetDaysInMonth = function(month, year) {
     return new Date(year, month, 0).getDate();
 }
 
-console.log(GetDaysInMonth(1, 2020));
+console.log(GetDaysInMonth(2, 2020));
