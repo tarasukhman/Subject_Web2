@@ -1,7 +1,7 @@
 class Port {
-    constructor(name, size) {
+    constructor(name, capacity) {
         this.name = name;
-        this.size = size;
+        this.capacity = capacity;
         PierCollection = [];
     }
     static PortCollection = [];
@@ -25,9 +25,9 @@ class Port {
             return obj.name !== port.name;
         })
     }
-    EditPort(name, size) {
+    EditPort(name, capacity) {
         this.name = name;
-        this.size = size;
+        this.capacity = capacity;
     }
 
     static SearchPort(portName) {
@@ -40,8 +40,9 @@ class Port {
 
 }
 class Ship {
-    constructor(name) {
+    constructor(name, length, width) {
         this.name = name;
+        this.size = [length, width];
     }
 
     static Collection = [];
@@ -49,8 +50,9 @@ class Ship {
     static AddShip(ship) {
         this.Collection.push(ship);
     }
-    EditShip(name) {
+    EditShip(name, length, width) {
         this.name = name;
+        this.size = [length, width];
     }
     static DeleteShip() {
 
@@ -65,9 +67,9 @@ class Ship {
 }
 
 class Pier {
-    constructor(name, size) {
+    constructor(name, capacity) {
         this.name = name;
-        this.size = size;
+        this.capacity = capacity;
 
     }
     static Collection = [];
@@ -89,9 +91,9 @@ class Pier {
             }
         }
     }
-    EditPier(name, size) {
+    EditPier(name, capacity) {
         this.name = name;
-        this.size = size;
+        this.capacity = capacity;
     }
 
     AddPierToPort(port) {
