@@ -2,7 +2,7 @@ class Port {
     constructor(name, capacity) {
         this.name = name;
         this.capacity = capacity;
-        PierCollection = [];
+        var PierCollection = [];
     }
     static PortCollection = [];
 
