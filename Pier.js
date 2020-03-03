@@ -1,10 +1,10 @@
-var PierCollection=[];
+var PierCollection = [];
 
-class Pier{
+class Pier {
     constructor(name, capacity) {
         this.name = name;
         this.capacity = capacity;
-      
+
     }
 
 
@@ -13,12 +13,12 @@ class Pier{
     }
     DeletePier() {
         let index;
-       for(var i=0;i<PierCollection.length;i++){
-           if(this.name===PierCollection[i]){
-                index=i;
-           }
-       }
-       PierCollection.splice(index,1);
+        for (var i = 0; i < PierCollection.length; i++) {
+            if (this.name === PierCollection[i]) {
+                index = i;
+            }
+        }
+        PierCollection.splice(index, 1);
     }
     static SearchShip(shipName) {
         for (let i = 0; i < ShipCollection.length; i++) {
@@ -27,7 +27,7 @@ class Pier{
             }
         }
     }
-    AddShipToPier(ship){
+    AddShipToPier(ship) {
         ShipCollection.push(ship);
     }
     EditPier(name, capacity) {
@@ -39,3 +39,5 @@ class Pier{
         port.PierCollection.push(this);
     }
 }
+
+module.exports = { Pier, PierCollection }

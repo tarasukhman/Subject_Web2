@@ -1,4 +1,4 @@
-var ShipCollection=[];
+var ShipCollection = [];
 
 class Ship {
     constructor(name, length, width) {
@@ -16,12 +16,12 @@ class Ship {
     }
     DeleteShip() {
         let index;
-        for(var i=0;i<ShipCollection.length;i++){
-            if(this.name===ShipCollection[i]){
-                 index=i;
+        for (var i = 0; i < ShipCollection.length; i++) {
+            if (this.name === ShipCollection[i]) {
+                index = i;
             }
         }
-        ShipCollection.splice(index,1);
+        ShipCollection.splice(index, 1);
     }
     static SearchShip(shipName) {
         for (let i = 0; i < ShipCollection.length; i++) {
@@ -30,4 +30,11 @@ class Ship {
             }
         }
     }
+    static ShowAllShips() {
+        for (let i = 0; i < ShipCollection.length; i++) {
+            console.log(ShipCollection[i]);
+        }
+    }
 }
+
+module.exports = { Ship, ShipCollection }

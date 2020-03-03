@@ -22,13 +22,13 @@ class Port {
         }
     }
     DeletePort() {
-       let index;
-       for(var i=0;i<PortCollection.length;i++){
-           if(this.name===PortCollection[i]){
-                index=i;
-           }
-       }
-       PortCollection.splice(index,1);
+        let index;
+        for (var i = 0; i < PortCollection.length; i++) {
+            if (this.name === PortCollection[i]) {
+                index = i;
+            }
+        }
+        PortCollection.splice(index, 1);
     }
     EditPort(name, capacity) {
         this.name = name;
@@ -44,6 +44,5 @@ class Port {
     }
 
 }
-var port=new Port('port1',10);
-port.AddPort();
-Port.ShowAllPorts();
+
+module.exports = { Port, PortCollection }
