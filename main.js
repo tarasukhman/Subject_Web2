@@ -21,7 +21,7 @@ sortedUsers.forEach(e => {
     console.log(e.surname);
 });*/
 //console.log('Task6:\n'+sortedUsers+'\n');
-console.log('Task7:\n');
+//console.log('Task7:\n');
 var ship1 = new shipClass.Ship('ship1', 10, 10)
 ship1.AddShip()
 var ship2 = new shipClass.Ship('ship2', 20, 10)
