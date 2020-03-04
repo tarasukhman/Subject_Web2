@@ -5,5 +5,4 @@ var RandomArrayShuffle = function(arr) {
     }
     return arr;
 }
-
-console.log(RandomArrayShuffle([1, 5, 3, 4, 8, 7]))
+module.exports={RandomArrayShuffle}

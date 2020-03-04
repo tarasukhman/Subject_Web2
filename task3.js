@@ -11,5 +11,4 @@ var MaxDivisor = function(num1, num2) {
     }
     return max;
 }
-
-console.log(MaxDivisor(28, 28));
+module.exports={MaxDivisor}
