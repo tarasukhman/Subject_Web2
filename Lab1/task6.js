@@ -6,21 +6,24 @@ function compare(a, b) {
         return 1;
     }
     return 0;
-}
+};
 
-user1 = {
+var user1 = {
     name: "Taras",
     surname: "Ukhman"
-}
-user2 = {
+};
+var user2 = {
     name: "Sofia",
     surname: "Dron"
-}
-user3 = {
+};
+var user3 = {
     name: "Pavlo",
     surname: "Tymoshchuk"
+};
+
+var User = [user1, user2, user3];
+
+module.exports = {
+    User: User,
+    compare: compare
 }
-
-User = [user1, user2, user3];
-
-console.log(User.sort(compare));

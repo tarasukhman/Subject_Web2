@@ -9,5 +9,4 @@ var StringSort = function(str) {
 
 }
 
-
-console.log(StringSort("programmig"));
+module.exports={StringSort}
