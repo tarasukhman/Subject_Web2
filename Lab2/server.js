@@ -15,11 +15,17 @@ app.set('view engine', 'pug')
 app.get('/', function (request, response) {
   response.render('pages/index', { title: 'Home' })
 })
-app.get('/shop', function (request, response) {
-  response.render('pages/shop', { title: 'Shop' })
+app.get('/shipinpiers', function (request, response) {
+  response.render('pages/shipinpiers', { title: 'shipsInPiers' })
 })
 app.get('/port', function (request, response) {
   response.render('pages/port', { title: 'Port' })
+})
+app.get('/ship', function (request, response) {
+  response.render('pages/ship', { title: 'ship' })
+})
+app.get('/piers', function (request, response) {
+  response.render('pages/piers', { title: 'piers' })
 })
 
 // запускаємо аплікацію
