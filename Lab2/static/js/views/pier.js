@@ -1,45 +1,46 @@
 'use strict'
 
-const shipInPiersModel = new shipInPiers() // eslint-disable-line no-undef
+const piersModel = new Pier() // eslint-disable-line no-undef
 
 function initAddForm() {
-    const form = window.document.querySelector('#shipinpiers-add-form')
+    const form = window.document.querySelector('#pier-add-form')
     form.addEventListener('submit', function(e) {
         e.preventDefault()
 
         const formData = new FormData(e.target)
-        const shipInPiersData = {}
+        const piersData = {}
         formData.forEach((value, key) => {
-            shipInPiersData[key] = value
+            piersData[key] = value
         })
 
-        shipInPiersModel.Create(shipInPiersData)
+        piersModel.Create(piersData)
 
         e.target.reset()
     })
 }
 
 function initList() {
-    window.jQuery('#shipinpiers-list').DataTable({
-        data: shipInPiersModel.Select(),
+    window.jQuery('#piers-list').DataTable({
+        data: piersModel.Select(),
         columns: [
             { title: 'ID', data: 'id' },
             { title: 'Name', data: 'name' },
-            { title: 'Piers', data: 'piers' },
+            { title: 'Number', data: 'number' },
+            { title: 'Quantity', data: 'quantity' },
             { title: 'Delete', data: '' }
         ],
         columnDefs: [{
             "render": function(data, type, row) {
                 return '<button type="button" value="delete" onclick="deleteItem(this)">Delete</button>';
             },
-            "targets": 3
+            "targets": 4
         }]
     })
 }
 
 function initListEvents() {
-    document.addEventListener('shipinpierssListDataChanged', function(e) {
-        const dataTable = window.jQuery('#shipinpiers-list').DataTable()
+    document.addEventListener('piersListDataChanged', function(e) {
+        const dataTable = window.jQuery('#piers-list').DataTable()
 
         dataTable.clear()
         dataTable.rows.add(e.detail)
@@ -51,7 +52,7 @@ function deleteItem(e) {
     let row = e.parentNode.parentNode;
     let id = row.getElementsByTagName('td')[0].innerText;
     row.remove();
-    shipInPiersModel.Delete(id);
+    piersModel.Delete(id);
 }
 
 window.addEventListener('DOMContentLoaded', e => {

@@ -6,7 +6,7 @@ block prepend styles
 block content
   div(class='breadcrumb')
     li= title
-  form(id='port-add-form' name='port-add-form' class='form-inline' action='')
+  form(id='pier-add-form' name='pier-add-form' class='form-inline' action='')
     div(class='form-group')
       div(class='col-md-3')
         label(for='name') Name
@@ -31,6 +31,6 @@ block content
     div.list-wrapper
       table(id='piers-list')
 block append scripts
-  script(src='/static/js/models/piers.js')
+  script(src='/static/js/models/pier.js')
   script(src='//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
-  script(src='/static/js/views/piers.js')
+  script(src='/static/js/views/pier.js')
