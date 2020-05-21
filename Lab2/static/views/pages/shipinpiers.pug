@@ -9,22 +9,24 @@ block content
   form(id='shipinpiers-add-form' name='shipinpiers-add-form' class='form-inline' action='')
     div(class='form-group')
       div(class='col-md-3')
-        label(for='name') Name
+        label(for='ship') Ship
       div(class='col-md-9')
-        select(id='name' name='name' value='' class='form-control' required='required')
-          option(value='') Select ship name
-          
+        select(id='ship' name='ship' class='form-control' required='required')
+          option(value='' selected='selected') Select ship
     div(class='form-group')
       div(class='col-md-3')
-        label(for='address') Piers
+        label(for='pier') Pier
       div(class='col-md-9')
-        input(id='piers' name='piers' value='' class='form-control')        
+        select(id='pier' name='pier' class='form-control' required='required')
+          option(value='' selected='selected') Select pier
     div(class='form-group')
       div(class='col-md-12')
         button(type='submit' class='btn btn-primary') Create
     div.list-wrapper
       table(id='shipinpiers-list')
 block append scripts
+  script(src='/static/js/models/ship.js')
+  script(src='/static/js/models/pier.js')
   script(src='/static/js/models/shipinpiers.js')
   script(src='//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js')
   script(src='/static/js/views/shipinpiers.js')

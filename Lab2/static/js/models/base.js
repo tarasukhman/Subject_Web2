@@ -48,14 +48,14 @@ class BaseModel {// eslint-disable-line no-unused-vars
    * @returns {BaseModel|undefined}
    */
   FindById (id) {
-    return this.Select().find(item => item.id === id)
+    return this.Select().find(item => item.id == id)
   }
   /**
    * @param {Number} id
    * @returns {Number}
    */
   FindIndexById (id) {
-    return this.Select().findIndex(item => item.id === id)
+    return this.Select().findIndex(item => item.id == id)
   }
   Create (row) {
     const collection = this.Select()

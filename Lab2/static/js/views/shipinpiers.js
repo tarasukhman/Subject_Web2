@@ -1,10 +1,26 @@
 'use strict'
 
+const shipModel = new Ship();
+const pierModel = new Pier();
 const shipInPiersModel = new shipInPiers() // eslint-disable-line no-undef
 
+function initSelectTag(tagId, model) {
+    let collection = model.Select();    
+    let selectTag = document.getElementById(tagId);
+    for(let i = 0; i < collection.length; ++i) {
+        let optionTag = document.createElement('option');
+        optionTag.setAttribute('value', collection[i].id);
+        optionTag.innerText = collection[i].name;
+        selectTag.appendChild(optionTag);
+    }
+}
+
 function initAddForm() {
+    initSelectTag('ship', shipModel);
+    initSelectTag('pier', pierModel);
 
     const form = window.document.querySelector('#shipinpiers-add-form')
+
     form.addEventListener('submit', function(e) {
         e.preventDefault()
 
@@ -25,16 +41,32 @@ function initList() {
         data: shipInPiersModel.Select(),
         columns: [
             { title: 'ID', data: 'id' },
-            { title: 'Name', data: 'name' },
-            { title: 'Piers', data: 'piers' },
+            { title: 'Ship', data: 'ship' },
+            { title: 'Pier', data: 'pier' },
             { title: 'Delete', data: '' }
         ],
-        columnDefs: [{
-            "render": function(data, type, row) {
-                return '<button type="button" value="delete" onclick="deleteItem(this)">Delete</button>';
+        columnDefs: [
+            {
+                render: function(data, type, row) {
+                    let ship = shipModel.FindById(data);
+                    return ship.name;
+                },
+                targets: 1
             },
-            "targets": 3
-        }]
+            {
+                render: function(data, type, row) {
+                    let pier = pierModel.FindById(data);
+                    return pier.name;
+                },
+                targets: 2
+            },
+            {
+                render: function(data, type, row) {
+                    return '<button type="button" value="delete" onclick="deleteItem(this)">Delete</button>';
+                },
+                targets: 3
+            }
+        ]
     })
 }
 
