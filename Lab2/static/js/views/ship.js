@@ -11,6 +11,7 @@ function initAddForm() {
         const shipData = {}
         formData.forEach((value, key) => {
             shipData[key] = value
+
         })
 
         shipModel.Create(shipData)

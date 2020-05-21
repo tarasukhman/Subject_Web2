@@ -3,6 +3,7 @@
 const shipInPiersModel = new shipInPiers() // eslint-disable-line no-undef
 
 function initAddForm() {
+
     const form = window.document.querySelector('#shipinpiers-add-form')
     form.addEventListener('submit', function(e) {
         e.preventDefault()
