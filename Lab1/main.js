@@ -17,13 +17,8 @@ console.log('Task5:\n' + task5.GetDaysInMonth(2, 2020) + '\n');
 console.log('Task6:\n')
 console.log(task6.User.sort(task6.compare))
 console.log('\n');
-/*sortedUsers = task6.User.sort(task6.compare);
-sortedUsers.forEach(e => {
-    console.log(e.name);
-    console.log(e.surname);
-});*/
-//console.log('Task6:\n'+sortedUsers+'\n');
-//console.log('Task7:\n');
+console.log('Task7:\n')
+
 var ship1 = new shipClass.Ship('ship1', 10, 10)
 ship1.AddShip()
 var ship2 = new shipClass.Ship('ship2', 20, 10)
