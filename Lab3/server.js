@@ -15,7 +15,7 @@ const errorMiddleware = require('./middlewares/error')
 
 const indexRoutes = require('./routes')
 const productRoutes = require('./routes/product')
-const locationRoutes = require('./routes/location')
+const pierRoutes = require('./routes/pier_')
 const shipInPierRoutes = require('./routes/ship_in_pier')
 
 const app = express()
@@ -40,7 +40,7 @@ app.use(appLocalsStringsMiddleware)
 
 app.use('/', indexRoutes)
 app.use('/product', productRoutes)
-app.use('/location', locationRoutes)
+app.use('/pier', pierRoutes)
 app.use('/ship-in-pier', shipInPierRoutes)
 
 app.use(notFoundMiddleware)

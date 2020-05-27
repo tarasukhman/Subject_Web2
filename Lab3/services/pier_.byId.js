@@ -1,15 +1,15 @@
-﻿const Location = require('./../models/location')
+﻿const Pier = require('../models/pier_')
 
 /**
  * @param {Object} data
  */
 module.exports = function (id) {
   return new Promise((resolve, reject) => {
-    Location.findById(id, function (err, location) {
+    Pier.findById(id, function (err, pier) {
       if (err) {
         reject(err)
       } else {
-        resolve(location)
+        resolve(pier)
       }
     })
   })
