@@ -3,7 +3,7 @@ extends ../../layout
 block content
   h3 Location Type List
 
-  a(href='/location-type/add' class="btn btn-default") Add
+  a(href='/ship-in-pier/add' class="btn btn-default") Add
   
   table(class="table")
     thead
@@ -13,11 +13,11 @@ block content
         th Code
         th &nbsp;
     tbody
-      each type in locationTypes
+      each type in shipsInPier
         tr
           td #{type.id}
           td #{type.name}
           td #{type.code}
           td
-            a(href=`/location-type/edit/${type.id}` class="btn btn-default") Edit
-            a(href=`/location-type/remove/${type.id}` class="btn btn-default") Delete
+            a(href=`/ship-in-pier/edit/${type.id}` class="btn btn-default") Edit
+            a(href=`/ship-in-pier/remove/${type.id}` class="btn btn-default") Delete

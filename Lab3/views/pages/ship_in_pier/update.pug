@@ -1,0 +1,19 @@
+extends ../../layout
+
+block content
+  div(class='col-md-6')
+    form(id='ship-in-pier-edit-form' name='ship-in-pier-edit-form' class='form-horizontal' method="POST" action='')
+      input(id='id' name='id' value=$fn.getPropOrDefault(newShipInPier, 'id', shipInPier.id) type='hidden')
+      div(class='form-group')
+        div(class='col-md-3')
+          label(for='name') Name
+        div(class='col-md-9')
+          input(id='name' name='name' value=$fn.getPropOrDefault(newShipInPier, 'name', shipInPier.name) class='form-control')
+      div(class='form-group')
+        div(class='col-md-3')
+          label(for='code') Code
+        div(class='col-md-9')
+          input(id='code' name='code' value=$fn.getPropOrDefault(newShipInPier, 'code', shipInPier.code) class='form-control')
+      div(class='form-group')
+        div(class='col-md-12')
+          button(type='submit' class='btn btn-primary') Update

@@ -3,7 +3,7 @@
 const { body, validationResult } = require('express-validator/check')
 const { sanitizeBody } = require('express-validator/filter')
 const locationAllService = require('./../services/location.all')
-const locationTypeAllService = require('./../services/location_type.all')
+const shipInPierAllService = require('./../services/ship_in_pier.all')
 const locationCreateService = require('./../services/location.create')
 const locationByIdService = require('./../services/location.byId')
 const locationUpdateService = require('./../services/location.update')
@@ -45,10 +45,10 @@ module.exports = {
   },
   async createLocationForm (req, res) {
     try {
-      const locationTypes = await locationTypeAllService()
+      const shipInPiers = await shipInPierAllService()
 
       res.render('pages/location/add', {
-        locationTypes: locationTypes
+        shipInPiers: shipInPiers
       })
     } catch (error) {
       res.render('pages/location/add', {
@@ -66,7 +66,7 @@ module.exports = {
     sanitizeBody('type_id').escape(),
     async (req, res) => {
       const locationData = req.body
-      const locationTypes = await locationTypeAllService()
+      const shipInPiers = await shipInPierAllService()
       const errors = validationResult(req)
 
       if (errors.isEmpty()) {
@@ -76,13 +76,13 @@ module.exports = {
           res.redirect('/location/list')
         } catch (error) {
           res.render('pages/location/add', {
-            locationTypes: locationTypes,
+            shipInPiers: shipInPiers,
             errors: [{ msg: error.message }]
           })
         }
       } else {
         res.render('pages/location/add', {
-          locationTypes: locationTypes,
+          shipInPiers: shipInPiers,
           errors: errors.array()
         })
       }
@@ -98,11 +98,11 @@ module.exports = {
         return
       }
 
-      const locationTypes = await locationTypeAllService()
+      const shipInPiers = await shipInPierAllService()
 
       res.render('pages/location/update', {
         location: location,
-        locationTypes: locationTypes
+        shipInPiers: shipInPiers
       })
     } catch (error) {
       const errorServer = new Error(`Internal server error: ${error.message}`)
@@ -119,7 +119,7 @@ module.exports = {
     sanitizeBody('type_id').escape(),
     async (req, res, next) => {
       const locationData = req.body
-      const locationTypes = await locationTypeAllService()
+      const shipInPiers = await shipInPierAllService()
 
       const errors = validationResult(req)
       if (errors.isEmpty()) {
@@ -131,7 +131,7 @@ module.exports = {
           res.render('pages/location/update', {
             location: {},
             newLocation: locationData,
-            locationTypes: locationTypes,
+            shipInPiers: shipInPiers,
             errors: [{ msg: error.message }]
           })
         }
@@ -139,7 +139,7 @@ module.exports = {
         res.render('pages/location/update', {
           location: {},
           newLocation: locationData,
-          locationTypes: locationTypes,
+          shipInPiers: shipInPiers,
           errors: errors.array()
         })
       }
