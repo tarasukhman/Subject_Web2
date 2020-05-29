@@ -1,0 +1,71 @@
+extends ../layout.pug
+
+block content
+
+
+
+
+    div.row
+        div.col-6
+            h2  Додавання корабля в колекцію
+            div.list-group
+                form(method='POST' action='/addShip')
+                    div.form-group
+                        label(for='nameShip') Name:
+                        input#nameShip.form-control(type='text', placeholder='Ship Name' name='name')
+                    div.form-group
+                        label(for='numberShip') number:
+                        input#numberShip.form-control(type='numb', placeholder='666' name='number')
+                    div.form-group
+                        label(for='countryShip') country:
+                        input#countryShip.form-control(type='country', placeholder='Ukraine' name='country')
+                    div.form-group
+                        label(for='tonnage') tonnage:
+                        input#tonnage.form-control(type='numb' name='tonnage')
+                    button.btn.btn-primary(type='submit') Add Ship
+                    p= verifyShip
+        div.row
+            div.col-6
+                h2  Редагування корабля в колекції
+                div.list-group
+                    form(method='POST' action='/editShip')
+                        label(for='OurShipEdit') Our Ship for edit:
+                        select#OurShipEdit(name = 'index')
+                            each val, index in dataShip
+                                option= index + '. Імя:' + val.name + '. Номер:' + val.number + '. Країна:' + val.country + '. Тонажність:' + val.tonnage
+                        div.form-group
+                            label(for='nameShipEdit') Name:
+                            input#nameShipEdit.form-control(type='text', placeholder='Ship Name' name='name')
+                        div.none
+                            label(for='numberShip') number:
+                            input#numberShipEdit.form-control(type='numb', placeholder='666' name='number')
+                        div.form-group
+                            label(for='countryShip') country:
+                            input#countryShipEdit.form-control(type='country', placeholder='Ukraine' name='country')
+                        div.form-group
+                            label(for='tonnageEdit') tonnage:
+                            input#tonnageEdit.form-control(type='numb' name='tonnage')
+                        button.btn.btn-primary(type='submit') Edit Ship
+                        p= newText
+        div.row
+            div.col-6
+                h2  Видалення корабля з колекції
+                div.list-group
+                    form(method='POST' action='/deleteShip')
+                        label(for='OurShipDELETE') Our Ship for edit:
+                        select#OurShipDELETE(name = 'index')
+                            each val, index in dataShip
+                                option= index + '. Імя:' + val.name + '. Номер:' + val.number + '. Країна:' + val.country + '. Тонажність:' + val.tonnage
+                        button.btn.btn-primary(type='submit') Delete Ship
+                        p= deleteText
+        div.row
+            div.col-6
+                h2  Пошук одного корабля в колекції
+                form(method='POST' action='/findShip')
+
+                    div.form-group
+                        label(for='NewFindNameShip') New name:
+                        input#NewFindNameShip.form-control(type='text', placeholder='Port Name' name='name')
+
+                    button.btn.btn-primary(type='submit') Find Ship
+                    p= newFindShip

@@ -1,0 +1,17 @@
+extends ../layout.pug
+
+block content
+    h2 Колекція пірсів
+    br
+
+    br
+    each val, index in data
+        div.piers= 'Пірс '+ val.name + ' з номером ' + val.number + ' та місткістю: ' + val.Capacity + '. осанка: ' + val.minOsanka
+            p='Кораблыв на пристані - ' + val.ships.length
+            form(method='POST' action=`/addShipToPiers/${val.number}`)
+                label(for='OurShipEdit') Our Ship for piers:
+                    select#OurShipEdit(name = 'index')
+                        each val, index in ships
+                            option='Номер: ' + val.number + '. Імя: ' + val.name +  '. Країна: ' + val.country + '. Осанка: ' + val.osanka
+                br
+                button.btn.btn-primary(type='submit') Add

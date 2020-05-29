@@ -1,0 +1,57 @@
+extends ../layout.pug
+
+block content
+
+
+
+
+    div.row
+        div.col-6
+            h2  Прибуття/Відбуття корабля від пристані
+            form(method='POST' action='/time')
+
+                label(for='cc') Our Ship:
+                select#cc(name = 'indexShips')
+                    each val, index in dataShip
+                        option= index + '. Імя:' + val.name + '. Номер:' + val.number + '. Країна:' + val.country
+
+                button.btn.btn-primary(type='submit') Edit
+
+                if show
+                    each val, index in info
+                        p= 'Корабель прибув на пристань N ' + val.pier + ' о:' + val.timeArrival + ', а відбув:' + val.timeDeparture
+                else
+                    p 'Оберіть корабель'
+    div.row
+        div.col-6
+            h2  Звіт кораблів усіх кораблів на заданій пристані
+            form(method='POST' action='/allSP')
+
+                label(for='cc') Our pier:
+                select#cc(name = 'indexPier')
+                    each val, index in piers
+                        option= index + '. Номер:' + val.number + '. Місткість:' + val.Capacity
+
+                button.btn.btn-primary(type='submit') Edit
+            p= hope
+            if endShow
+                each val, index in allShips
+                    p= 'Корабель з номером ' + val
+    div.row
+        div.col-6
+            h2  Звіт про розміщення кораблів на пристанях заданого порту
+            form(method='POST' action='/report')
+
+                label(for='cc') Our pier:
+                select(name = 'last')
+                    each val, index in data
+                        option= index + '. Імя:' + val.name + '. Країна:' + val.country + '. EDP:' + val.EDP + '. Пірс:' + val.pier
+
+                button.btn.btn-primary(type='submit') Edit
+                if lastShow && lastChec
+                    p= 'Порт - ' + lastport + ' містить в собі такі кораблі'
+                    each val, index in lastInfo
+                        p= 'Корабель з номером ' + val
+                else if !lastinfo && lastShow
+                    p=  'Порт - ' + lastport + ' не має кораблів'
+

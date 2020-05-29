@@ -1,0 +1,39 @@
+extends ../layout.pug
+
+block content
+    form(method='POST' action=`/addPort`)
+        label(for='NewName') New name:
+            input#NewName.form-control(type='text', placeholder='Port Name' name='name')
+        label(for='NewCountry') New Country:
+            input#NewCountry.form-control(type='Country', placeholder='Ukraine' name='Country')
+        label(for='NewEDP') New EDP:
+            input#NewEDP.form-control(type='text', placeholder='EDP' name='EDP')
+        label(for='NewAddress') New Address:
+            input#NewAddress.form-control(type='text' name='address')
+        button.btn.btn-primary(type='submit') Add
+    h2 Колекція портів
+    br
+    p= err
+    br
+    each val, index in data
+        div.port= index + '. Імя:' + val.name + '. Країна:' + val.country + '. EDP:' + val.edp + '. Пірси:' + val.piers.length + '. Адрес:' + val.address
+            form(method='POST' action=`/editPort/${val.edp}`)
+                label(for='NewName') New name:
+                    input#NewName.form-control(type='text', placeholder='Port Name' name='name')
+                label(for='NewCountry') New Country:
+                    input#NewCountry.form-control(type='Country', placeholder='Ukraine' name='Country')
+                label(for='NewEDP') New EDP:
+                    input#NewEDP.form-control(type='text', placeholder='EDP' name='EDP')
+                label(for='NewAddress') New Address:
+                    input#NewAddress.form-control(type='text' name='address')
+                button.btn.btn-primary(type='submit') Edit
+            br
+            form(method='POST' action=`/addPierToPort/${val.edp}`)
+                label(for='OuePier') Oue Port:
+                    select#OuePier(name = 'indexPier')
+                        each val, index in dataPier
+                            option= index + '. Номер:' + val.number + '. Місткість:' + val.Capacity
+                button.btn.btn-primary(type='submit') Add pier
+            br
+            form(method='POST' action=`/deletePort/${val.edp}`)
+                button.btn.btn-primary(type='submit') Delete

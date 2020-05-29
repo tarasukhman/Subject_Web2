@@ -1,0 +1,67 @@
+extends ../layout.pug
+
+block content
+    div.col-6
+        h2 Додавання нового порту в колекцію
+            div.list-group
+                form(method='POST' action='/addPort')
+                    div.form-group
+                        label(for='name') Name:
+                        input#name.form-control(type='text', placeholder='Port Name' name='name')
+                    div.form-group
+                        label(for='Country') Country:
+                        input#Country.form-control(type='Country', placeholder='Ukraine' name='Country')
+                    div.form-group
+                        label(for='EDP') EDP:
+                        input#EDP.form-control(type='text', placeholder='EDP' name='EDP')
+                    div.form-group
+                        label(for='address') Address:
+                        input#address.form-control(type='text' name='address')
+                    button.btn.btn-primary(type='submit') Add
+                    p= verify
+        div.col-6
+            h2  Редагування порту в колекції
+            div.list-group
+                form(method='POST' action='/editPort')
+                    label(for='OueShip') Oue Port for edit:
+                    select#OueShip(name = 'index')
+                        each val, index in data
+                            option= index + '. Імя:' + val.name + '. Країна:' + val.country + '. EDP:' + val.EDP + '. Адрес:' + val.address
+                    div.form-group
+                        label(for='NewName') New name:
+                        input#NewName.form-control(type='text', placeholder='Port Name' name='name')
+                    div.form-group
+                        label(for='NewCountry') New Country:
+                        input#NewCountry.form-control(type='Country', placeholder='Ukraine' name='Country')
+                    div.none
+                        label(for='NewEDP') New EDP:
+                        input#NewEDP.form-control(type='text', placeholder='EDP' name='EDP')
+                    div.form-group
+                        label(for='NewAddress') New Address:
+                        input#NewAddress.form-control(type='text' name='address')
+                    button.btn.btn-primary(type='submit') Edit
+                    p= newText
+
+
+        div.row
+            div.col-6
+                h2  Видалення порту з колекції
+                form(method='POST' action='/deletePort')
+                    div
+                        label(for='ShipForDel') Oue Port for delete:
+                            select#ShipForDel(name = 'index')
+                                each val, index in data
+                                    option= index + '. Імя:' + val.name + '. Країна:' + val.country + '. EDP:' + val.EDP + '. Адрес:' + val.address
+                    button.btn.btn-primary(type='submit') Delete
+                    p= newDelete
+        div.row
+            div.col-6
+                h2  Пошук одного порту в колекції
+                form(method='POST' action='/findPort')
+
+                    div.form-group
+                        label(for='NewFindName') New name:
+                        input#NewFindName.form-control(type='text', placeholder='Port Name' name='name')
+
+                    button.btn.btn-primary(type='submit') Find
+                    p= newFind
